@@ -3,6 +3,7 @@ package com.bookstore.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +20,6 @@ import com.bookstore.entity.Book;
 import com.bookstore.service.BookService;
 //import jakarta.validation.Valid;
 import java.util.List;
-
-
 
 
 
@@ -49,10 +48,12 @@ public class BookController {
 		
 	
 		@GetMapping("/available_books")
-		public String getAllBooks(Model model) {
-			List<Book>books=service.getAllBooks();
-			model.addAttribute("books",books);
-			return "bookList";
+		public ModelAndView getAllBooks(Model model) {
+			List<Book>List=service.getAllBooks();
+			ModelAndView m =new ModelAndView();
+			m.setViewName("bookList");
+			
+			return m;
 		}
 		
 		
@@ -61,16 +62,13 @@ public class BookController {
 		@PostMapping("/book_register")
 		public String registerBook(@Validated @ModelAttribute("book") Book book, BindingResult result) {
 		    if (result.hasErrors()) {
-		        return "bookRegister"; // Redisplay the form on validation errors
+		        return "bookRegister"; 
 		    }
-		    service.saveBook(book); // Ensure service logic for saving is implemented
+		    service.saveBook(book);
 		    return "success";
 		}
 		
-		
-		
-		
-		
+	
 		//@PostMapping("/save")
 		public String saveBook(@ModelAttribute Book book) {
 			service.save(book);
