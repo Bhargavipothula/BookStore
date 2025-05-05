@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class Jdbc {
 public static void main(String args[]) {
 	
-	String url = "jdbc:mysql://localhost:3306/book";
+	String url = "jdbc:mysql://localhost:3306/book1";
 	String user="root";
 	String password ="Bhargavi@68";
 	
@@ -19,7 +19,7 @@ public static void main(String args[]) {
 		System.out.println("connected to the database!");
 		
 		Statement statement = connection.createStatement();
-		statement.executeUpdate("INSERT INTO book(author,name,price)VALUES('George Orwell','Animal Farm',567);");
+		statement.executeUpdate("INSERT INTO book1(author,name,price)VALUES('George Orwell','Animal Farm',567);");
 		ResultSet resultSet = statement.executeQuery("SELECT * FROM book");
 		
 		

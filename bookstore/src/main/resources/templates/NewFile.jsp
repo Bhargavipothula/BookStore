@@ -23,7 +23,7 @@
             Statement statement = connection.createStatement();
 
             // SQL query to fetch data
-            String query = "SELECT * FROM book";
+            String query = "SELECT * FROM book1";
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
